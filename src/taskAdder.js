@@ -44,8 +44,8 @@ function addingTasks() {
         descriptionText.textContent = descInput.value; // Assuming you have an input field with id='descInput' for entering description
 
         const selectBtnText = document.createElement('div');
-        selectBtnText.id = 'select-btn';
-        selectBtnText.textContent = 'Buttons'; // Assuming this is what you want to add in the 'Buttons' div
+        selectBtnText.id = 'delete-task';
+        selectBtnText.textContent = 'Delete'; // Assuming this is what you want to add in the 'Buttons' div
 
         lower.appendChild(descriptionText);
         lower.appendChild(selectBtnText);
@@ -62,7 +62,17 @@ function addingTasks() {
         taskInput.value = '';
         descInput.value = '';
         dateInput.value = '';
+
+        taskSections.addEventListener('click', function (e) {
+            if (e.target.classList.contains('delete')) {
+                const parent = e.target.parentElement.parentElement;
+                parent.parentElement.removeChild(parent);
+            }
+        });
     });
 }
+
+
+
 
 export default addingTasks;
