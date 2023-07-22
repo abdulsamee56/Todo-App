@@ -13,7 +13,7 @@ function addingTasks() {
         const listItem = document.createElement('li');
         listItem.textContent = taskInput.value;
         listItem.classList.add('left-hand-task'); // Add a class for easier selection later
-        taskList.appendChild(listItem);
+        
 
         // Create the task section HTML
         const taskSection = document.createElement('div');
@@ -45,6 +45,7 @@ function addingTasks() {
 
         const selectBtnText = document.createElement('div');
         selectBtnText.id = 'delete-task';
+        selectBtnText.classList.add('delete');
         selectBtnText.textContent = 'Delete'; // Assuming this is what you want to add in the 'Buttons' div
 
         lower.appendChild(descriptionText);
@@ -62,16 +63,17 @@ function addingTasks() {
         taskInput.value = '';
         descInput.value = '';
         dateInput.value = '';
-
-        taskSections.addEventListener('click', function (e) {
-            if (e.target.classList.contains('delete')) {
-                const parent = e.target.parentElement.parentElement;
-                parent.parentElement.removeChild(parent);
-            }
-        });
+        
     });
 }
 
+
+taskSections.addEventListener('click', function (e) {
+    if (e.target.classList.contains('delete')) {
+        const parent = e.target.parentElement.parentElement;
+        parent.parentElement.removeChild(parent);
+    }
+});
 
 
 
